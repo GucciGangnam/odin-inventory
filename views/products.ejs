@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <a href="/"> Home </a>
+    <h1>
+        <%= title %>
+    </h1>
+    <p>Welcome to <%= title %>
+    </p>
+    <h2>Products: <%= numProducts %> </h2>
+    <h3>Items: <%= numItems %> </h3>
+    <ul>
+        <% if (allCProducts.length> 0) { %>
+            <% allCProducts.forEach(prod=> { %>
+                <li>
+                    <a href="<%= prod.url %>">
+                        <%= prod.name %>
+                    </a> 
+                    (<%= prod.description %>)
+                    x <%= prod.numberInStock %>
+                </li>
+                <% }); %>
+                    <% } else { %>
+                        <li>There are no products.</li>
+                        <% } %>
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <a href="/"> Home </a>
+  <h1>
+    <%= title %>
+  </h1>
+  <p>Welcome to <%= title %>
+  </p>
+  <p>Categories: <%= numCategories %>
+  </p>
+  <ul>
+    <% if (allCategories.length> 0) { %>
+      <% allCategories.forEach(cat=> { %>
+        <li>
+          <a href="<%= cat.url %>">
+            <%= cat.name %>
+          </a>
+          (<%= cat.description %>)
+        </li>
+        <% }); %>
+          <% } else { %>
+            <li>There are no categories.</li>
+            <% } %>
+  </ul>
+
+  <a href="categories/new">Add a new category</a>
+
+</body>
+
+</html>
