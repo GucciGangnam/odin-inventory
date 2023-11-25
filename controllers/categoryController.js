@@ -1,5 +1,6 @@
 // import schemes 
 const Categories = require("../models/category");
+const Products = require("../models/product")
 
 //Validator methods
 const { body, validationResult } = require("express-validator");
@@ -28,7 +29,7 @@ exports.new_post = [
     // Validate and sanitize fields.
     body("categoryName")
         .trim()
-        .isLength({min: 1})
+        .isLength({ min: 1 })
         .withMessage("must be at least 100 chars long")
         .customSanitizer(value => {
             // Capitalize the first letter
@@ -36,7 +37,7 @@ exports.new_post = [
         }),
     body("categoryDescription")
         .trim()
-        .isLength({min:1})
+        .isLength({ min: 1 })
         .withMessage("Must have a description")
         .customSanitizer(value => {
             // Capitalize the first letter
@@ -72,4 +73,14 @@ exports.new_post = [
     }),
 ];
 
-//Display Spesific category 
+// Display Specific category
+exports.category_detail = asyncHandler(async (req, res, next) => {
+    const categoryId = req.params.id.charAt(0).toUpperCase() + req.params.id.slice(1);
+    console.log(categoryId)
+
+    const productsInCategory = await Products.find({ category: categoryId });
+    const productsInCategoryCount = productsInCategory.length;
+
+    res.render("categoryDetail", {categoryId : categoryId, productsInCategory: productsInCategory, productsInCategoryCount: productsInCategoryCount });
+});
+

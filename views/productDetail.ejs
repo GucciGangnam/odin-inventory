@@ -1,0 +1,28 @@
+<% if (typeof product !=='undefined' ) { %>
+    Product: <%= product %>
+        <br />
+        <% } %>
+
+            <% if (typeof description !=='undefined' ) { %>
+                Description: <%= description %>
+                    <br />
+                    <% } %>
+
+                        <% if (typeof price !=='undefined' ) { %>
+                            Price: <%= price %>
+                                <br />
+                                <% } %>
+
+                                    <% if (typeof category !=='undefined' ) { %>
+                                        Category:<a href="/categories/<%= category %>"><%= category %></a>
+                                            <br />
+                                            <% } %>
+
+                                                <% if (typeof stock !=='undefined' ) { %>
+                                                    Stock: <%= stock %>
+                                                        <br />
+                                                        <% } %>
+<br/>
+<a href="/products"> Products </a>
+<br/>
+<a href="/categories"> Categories </a>

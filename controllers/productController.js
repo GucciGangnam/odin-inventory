@@ -1,3 +1,4 @@
+const { render } = require("../app");
 const Categories = require("../models/category");
 const Products = require("../models/product");
 
@@ -23,4 +24,25 @@ exports.index = asyncHandler(async (req, res, next) => {
         allCProducts: allCProducts,
         numItems: numItems,
     })
+});
+
+// Display spesific product
+
+exports.product_detail = asyncHandler(async (req, res, next) => {
+    let productName = req.params.id.charAt(0).toUpperCase() + req.params.id.slice(1);
+
+
+    try {
+        const foundProduct = await Products.findOne({ name: productName });
+
+        if (foundProduct) {
+            res.render("productDetail", { product: foundProduct.name, description: foundProduct.description, price: foundProduct.price, category: foundProduct.category, stock: foundProduct.numberInStock});
+        } else {
+            res.render("productDetail", { product: productName + " not found." });
+        }
+    } catch (err) {
+        // Handle any potential errors, e.g., log them or send an error response
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
 });

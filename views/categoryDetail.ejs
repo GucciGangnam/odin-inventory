@@ -1,0 +1,30 @@
+<h1>
+    <%= categoryId %>
+</h1>
+
+<br/>
+<br/>
+
+    prod list:
+
+    <ul>
+        <% if (productsInCategory.length> 0) { %>
+            <% productsInCategory.forEach(prod=> { %>
+                <li>
+                    <a href="<%= prod.url %>">
+                        <%= prod.name %>
+                    </a>
+                    (<%= prod.description %>)
+                </li>
+                <% }); %>
+                    <% } else { %>
+                        <li>There are no products.</li>
+                        <% } %>
+    </ul>
+
+    <br/>
+    <a href="/categories">All Categories</a>
+    <br/>
+    <a href="/">Add Product</a>
+    <br/>
+    <a href="categories/<%= categoryId.toLowerCase() %>/delete">Delete this category </a>

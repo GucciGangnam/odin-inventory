@@ -13,16 +13,39 @@ router.get('/', home_controller.index);
 router.get("/categories", category_controller.index)
 
 
-// NEW CATEGORY FORM //
-/* Display New catagory form */
-router.get("/categories/new", category_controller.new_get)
+  // NEW CATEGORY //
+  /* Display New catagory form */
+  router.get("/categories/new", category_controller.new_get)
 
-/* Display New catagory form */
-router.post("/categories/new", category_controller.new_post)
-//////////////////////
+  /* Display New catagory form */
+  router.post("/categories/new", category_controller.new_post)
+  //////////////////////
+
+    // DELETE CATEGORY //
+
+
+
+
+
+
+
+
+/////// Display Spesific Catagory /// USING ID'S SO MUST COME LAST!!!!!!
+router.get("/categories/:id", category_controller.category_detail)
+
+
+
+////////////////PRODUCTS ///////////////////////////  
 
 
 /* Display Products */
 router.get("/products", product_controller.index)
+
+
+
+
+
+/////// Display Spesific Products /// USING ID'S SO MUST COME LAST!!!!!!
+router.get("/products/:id", product_controller.product_detail)
 
 module.exports = router;
