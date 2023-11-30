@@ -1,0 +1,29 @@
+<h2> Are you sure you want to delete the <%= category %> category?</h2>
+
+<p> There are
+    <%= numAllProductsInCategory %>
+        products in this category:
+</p>
+<br />
+
+<ul>
+    <% if (allProductsInCategory.length > 0) { %>
+        <% allProductsInCategory.forEach(prod=> { %>
+            <li>
+                <a href="<%= prod.url %>">
+                    <%= prod.name %>
+                </a>
+                (<%= prod.description %>)
+            </li>
+            <% }); %>
+                <% } else { %>
+                    <li>There are no categories.</li>
+                    <% } %>
+</ul>
+<br/>
+Are you sure you want to PERMA DELETE this catagory and ALL its contents?
+<form method="POST">
+    <button type="submit">Delete</button>
+</form>
+
+<button><a href="/categories/<%= category %>"> Back </a></button>

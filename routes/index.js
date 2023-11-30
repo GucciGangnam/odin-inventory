@@ -23,7 +23,9 @@ router.get("/categories", category_controller.index)
 
     // DELETE CATEGORY //
 
+    router.get("/categories/:id/delete", category_controller.category_delete_get)
 
+    router.post("/categories/:id/delete", category_controller.category_delete_post)
 
 
 
@@ -37,6 +39,14 @@ router.get("/categories/:id", category_controller.category_detail)
 
 ////////////////PRODUCTS ///////////////////////////  
 
+// NEW PRODUCT //
+  /* Display New PRODUCT form */
+  router.get("/products/new", product_controller.new_get)
+
+  /* Display New PRODUCT form */
+  router.post("/products/new", product_controller.new_post)
+  //////////////////////
+
 
 /* Display Products */
 router.get("/products", product_controller.index)
@@ -47,5 +57,19 @@ router.get("/products", product_controller.index)
 
 /////// Display Spesific Products /// USING ID'S SO MUST COME LAST!!!!!!
 router.get("/products/:id", product_controller.product_detail)
+
+
+///// Upadte prodduct route//////
+
+router.get("/products/:id/update", product_controller.update_get)
+router.post("/products/:id/update", product_controller.update_post)
+
+///DELETE PRODUCT///////
+
+router.get("/products/:id/delete", product_controller.product_delete_get)
+
+router.post("/products/:id/delete", product_controller.product_delete_post)
+
+
 
 module.exports = router;

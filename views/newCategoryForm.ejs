@@ -11,9 +11,16 @@
 
 
     <% if (typeof errors !=='undefined' ) { %>
+
+        <p>
+            ERROR POSTING FORM!
+        </p>
         <p>
             <%= JSON.stringify(errors[0].msg) %>
         </p>
+
+
+
         <% } %>
 
 

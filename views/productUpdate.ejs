@@ -1,0 +1,40 @@
+<style>
+    .strikethrough {
+        text-decoration: line-through;
+    }
+</style>
+
+
+<h1> Update <%= productName %> </h1>
+<form method="POST">
+<p>Product Name:</p>
+<input type="text", value="<%= productName %>" name="productName"/>
+<p>Product Description:</p>
+<input type="text", value="<%= description %>" name="productDescription"/>
+<p>Catgeory:</p>
+<select name="productCategory" required="true">
+    <% categoryNames.forEach(category=> { %>
+        <option value="<%= category %>" selected="<%= category %>">
+            <%= category %>
+        </option>
+        <% }); %>
+</select>
+<p>Price:</p>
+<input type="text", value="<%= price %>" name="productPrice"/>
+<p>Stock Count:</p>
+<input type="text", value="<%= stock %>" name="stockCount"/>
+<br/>
+<br/>
+<button> UPDATE </button>
+</form>
+<button> Back </button>
+
+<% if (typeof errors !=='undefined' ) { %>
+    <p>
+        ERROR POSTING FORM!
+        <br/>
+        <%= JSON.stringify(errors[0].msg) %>
+        <br/>
+        You fool!
+    </p>
+    <% } %>

@@ -1,0 +1,39 @@
+<a href="/">Home</a>
+<h1> Add new product</h1>
+<form method="POST" action=''>
+    <label for="productName">Product Name</label>
+    <input type="text" , placeholder="Product Name" , name="productName" , required="true" />
+    <br />
+    <label for="productDescription">Product Description</label>
+    <input type="text" , placeholder="Product Description" , name="productDescription" , required="true" />
+    <br />
+    <label for="productCategory">Product Category</label>
+    <select name="productCategory" required="true">
+        <% categoryNames.forEach(category=> { %>
+            <option value="<%= category %>">
+                <%= category %>
+            </option>
+            <% }); %>
+    </select>
+    <br/>
+    <label for="numberInStock">Stcok Count</label>
+    <input type="number" , placeholder="1" , name="numberInStock" , required="true" />
+    <br />
+    <label for="price">Price</label>
+    <input type="text" , placeholder="Price" , name="price" , required="true" />
+    <br />
+    <button type="submit">Add</button>
+
+
+    <% if (typeof errors !=='undefined' ) { %>
+        <p>
+            ERROR POSTING FORM!
+            <br/>
+            <%= JSON.stringify(errors[0].msg) %>
+            <br/>
+            You fool!
+        </p>
+        <% } %>
+
+
+</form>
